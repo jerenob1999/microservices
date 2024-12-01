@@ -1,10 +1,10 @@
 import { BaseDTO } from "../config/base.dto";
 import { IsString } from "class-validator";
 
-export class FormDTO extends BaseDTO {
+export class UserDTO extends BaseDTO {
   @IsString()
-  title!: string;
+  email!: string;
 
   @IsString()
-  description!: string;
+  password!: string;
 }

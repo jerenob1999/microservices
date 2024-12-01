@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
 import { HttpResponse } from "../shared/response/http.response";
 import { FormService } from "./forms.service";
+import { Request, Response } from "express";
 import { FormDTO } from "./forms.dto";
 
 export class ProductController {
@@ -32,10 +32,10 @@ export class ProductController {
     }
   }
 
-  async createForm(req: Request<null, FormDTO>, res: Response) {
-    const { body } = req.body;
+  async createForm(req: Request<{}, {}, FormDTO>, res: Response) {
+    const form = req.body;
     try {
-      const data = await this.formService.findFormById(body);
+      const data = await this.formService.createForm(form);
       if (!data) {
         return this.httpResponse.NotFound(
           res,
