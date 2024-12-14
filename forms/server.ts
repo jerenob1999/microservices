@@ -1,8 +1,11 @@
+import "reflect-metadata";
+import { FormRouter } from "./src/forms/forms.router";
+import { UserRouter } from "./src/user/user.router";
 import { ConfigServer } from "./src/config/config";
 import express, { Application } from "express";
 import { DataSource } from "typeorm";
+import { Router } from "express";
 import morgan from "morgan";
-import "reflect-metadata";
 import cors from "cors";
 
 class Server extends ConfigServer {
@@ -39,9 +42,9 @@ class Server extends ConfigServer {
       });
   }
 
-  // routes(): void {
-  //   new Routes(this.app).routesConfig();
-  // }
+  routers(): Array<Router> {
+    return [new FormRouter().router, new UserRouter().router];
+  }
 
   public listen(): void {
     this.app.listen(this.port, () => {

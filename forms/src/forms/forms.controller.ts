@@ -3,7 +3,7 @@ import { FormService } from "./forms.service";
 import { Request, Response } from "express";
 import { FormDTO } from "./forms.dto";
 
-export class ProductController {
+export class FormController {
   constructor(
     private readonly formService: FormService = new FormService(),
     private readonly httpResponse: HttpResponse = new HttpResponse()
