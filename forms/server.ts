@@ -26,6 +26,8 @@ class Server extends ConfigServer {
         credentials: true,
       })
     );
+
+    this.app.use("/", this.routers());
   }
 
   private middlewares(): void {

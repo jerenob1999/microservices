@@ -13,6 +13,7 @@ export class FormRouter extends BaseRouter<FormController> {
     });
 
     this.router.get("/form/list", async (req: Request, res: Response) => {
+      console.log("llegando");
       await this.controller.getForms(req, res);
     });
 

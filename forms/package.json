@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsx ./index.ts",
-    "tsc": "tsc"
+    "start": "nodemon --watch ./ --ext ts,tsx --exec tsx ./index.ts",
+    "tsc": "tsc",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "m:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/config/data.source.ts",
+    "m:gen": "npm run typeorm migration:generate -- -d ./src/config/data.source.ts"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +18,7 @@
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.10.1",
+    "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
@@ -24,10 +28,10 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.20",
     "typeorm-naming-strategies": "^4.1.0"
-  },
-  "type": "module"
+  }
 }

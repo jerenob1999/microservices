@@ -3,7 +3,7 @@ import { UserEntity } from "../user/user.entity";
 import { Column, ManyToOne, Entity } from "typeorm";
 
 @Entity({ name: "form" })
-export abstract class FormEntity extends BaseEntity {
+export class FormEntity extends BaseEntity {
   @Column("text")
   title!: string;
 

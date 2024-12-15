@@ -1,11 +1,13 @@
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 import { DataSource, DataSourceOptions } from "typeorm";
 import { fileURLToPath } from "url";
+import { FormEntity } from "../forms/forms.entity";
+import { UserEntity } from "../user/user.entity";
 import dotenv from "dotenv";
 import path from "path";
 
-const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 console.log(process.env.DB_DATABASE);
 
@@ -23,10 +25,9 @@ const Config: DataSourceOptions = {
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  entities: [__dirname + "/../**/*.entity{.ts,.js}"],
-  migrations: [__dirname + "/../migrations/*{.ts,.js}"],
+  entities: [FormEntity, UserEntity],
+  migrations: ["src/migrations/**/*.ts"],
   synchronize: false,
-  migrationsRun: true,
   logging: false,
   namingStrategy: new SnakeNamingStrategy(),
 };
